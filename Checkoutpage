@@ -1,1 +1,125 @@
+package checkoutPage;
+
+import org.testng.annotations.Test;
+
+import org.testng.annotations.BeforeMethod;
+
+import java.time.Duration;
+
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.AfterMethod;
+
+import org.openqa.selenium.By;
+
+
+
+
+public class Checkout {
+	WebDriver driver;
+	WebElement addbox, addbar, proceed_1, proceed_2, proceed_3, proceed_4, pmt1, altpmt, pmt2, confirm, history, navbar_login, home, uname_box, pwd_box, login_button, agreebox;
+ 
+  @BeforeMethod
+  public void beforeMethod() {
+			driver = new ChromeDriver();
+			driver.manage().window().maximize();
+			driver.get("https://test.bishalkarki.com");
+			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+			
+		  }
+
+
+  @Test
+  public void f() {
+	  try {  
+	
+	  navbar_login = driver.findElement(By.className("login"));
+	  navbar_login.click();
+	  driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+				
+	  uname_box = driver.findElement(By.id("email"));
+	  uname_box.sendKeys("sanyampradhan96@gmail.com");
+				
+	  pwd_box = driver.findElement(By.id("passwd"));
+	  pwd_box.sendKeys("honda125");
+		  
+	  login_button = driver.findElement(By.xpath("//*[@id=\"SubmitLogin\"]/span"));
+	  login_button.click();
+		
+	  home = driver.findElement(By.xpath("//*[@id=\"header_logo\"]/a/img"));
+	  home.click();
+		
+	
+	  addbox = driver.findElement(By.xpath("//*[@id=\"homefeatured\"]/li[3]/div/div[2]/h5/a"));
+	  addbox.click();
+	  Thread.sleep(Duration.ofSeconds(2));
+		  
+	  addbar = driver.findElement(By.xpath("//*[@id=\"add_to_cart\"]/button/span"));
+	  addbar.click();
+	  Thread.sleep(Duration.ofSeconds(2));
+	  
+	  proceed_1 = driver.findElement(By.xpath("//*[@id=\"layer_cart\"]/div[1]/div[2]/div[4]/a/span"));
+	  proceed_1.click();
+	  Thread.sleep(Duration.ofSeconds(2));
+
+	  proceed_2 = driver.findElement(By.xpath("//*[@id=\"center_column\"]/p[2]/a[1]/span"));
+	  proceed_2.click();
+	  Thread.sleep(Duration.ofSeconds(2));
+	  
+	  
+	  proceed_3 = driver.findElement(By.xpath("//*[@id=\"center_column\"]/form/p/button/span"));
+	  proceed_3.click();
+	  Thread.sleep(Duration.ofSeconds(2));
+	  
+	  
+	  agreebox = driver.findElement(By.xpath("//*[@id=\"cgv\"]"));
+	  agreebox.click();
+	  Thread.sleep(Duration.ofSeconds(2));
+	
+	  
+	  proceed_4 = driver.findElement(By.xpath("//*[@id=\"form\"]/p/button/span"));
+	  proceed_4.click();
+	  Thread.sleep(Duration.ofSeconds(2));
+	
+	  pmt1 = driver.findElement(By.xpath("//*[@id=\"HOOK_PAYMENT\"]/div[1]/div/p/a"));
+	  pmt1.click();
+	  Thread.sleep(Duration.ofSeconds(2));
+	  
+	  altpmt = driver.findElement(By.xpath("//*[@id=\"cart_navigation\"]/a"));
+	  altpmt.click();
+	  Thread.sleep(Duration.ofSeconds(2));
+	  
+
+	  pmt2 = driver.findElement(By.xpath("//*[@id=\"HOOK_PAYMENT\"]/div[2]/div/p/a"));
+	  pmt2.click();
+	  Thread.sleep(Duration.ofSeconds(2));
+	  
+	  confirm = driver.findElement(By.xpath("//*[@id=\"cart_navigation\"]/button/span"));
+	  confirm.click();
+	  Thread.sleep(Duration.ofSeconds(5));
+	 
+	  history = driver.findElement(By.xpath("//*[@id=\"center_column\"]/p[2]/a"));
+	  history.click();
+	  Thread.sleep(Duration.ofSeconds(10));
+	  
+	  
+		}
+		catch (Exception E) {
+			System.out.print("There is an exception" + E);
+			
+		
+		
+			}
+  }
+
+  
+  
+  @AfterMethod
+	  public void afterMethod() {
+		driver.quit();
+  }
+
+}
 
